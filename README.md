@@ -20,6 +20,17 @@
 - 「QQ-14 MR 開了：<MR URL>。請在 Jira 補 MR opened evidence，狀態維持/轉到進行中。」
 - 「QQ-14 MR merged：<MR URL>，squash commit <SHA>。請補 MR merged + commit evidence，然後轉完成。」
 
+### Example prompts for different environments
+
+#### Claude (Claude Code / Claude Desktop)
+- “I’m working on QQ-14. Based on my current git branch/commits/MR, propose a Jira write plan (comments + transitions) and ask me to confirm. Use a confirm-before-write block.”
+
+#### Cursor
+- “Read the current git status/log, infer the Jira key, and draft the exact Jira evidence comments (with AUTOJIRA: EVIDENCE tags). Then show a single confirmation bundle before any write.”
+
+#### antigravity
+- “Run the Git↔Jira workflow: read issue + transitions, propose minimal writes, wait for OK, then add idempotent evidence comments and transition to Done.”
+
 更多細節：`references/00_INDEX.md`
 
 ## Install (clone)
@@ -32,12 +43,21 @@ git clone git@github.com:Stanley-1013/autoJira-skill.git
 cd autoJira-skill
 ```
 
-### Option B — Moltbot (Linux/macOS)
-> Default Moltbot shared skills dir: `~/.clawdbot/skills/`
+### Option B — Moltbot / Clawd (Linux/macOS)
+> **Recommended:** `~/.clawdbot/skills/` (current user-facing location)
+>
+> Note: on some installs this may be a symlink/alias to `~/.moltbot/skills/`. Either is fine as long as your Moltbot instance loads skills from it.
 
 ```bash
 mkdir -p ~/.clawdbot/skills
 cd ~/.clawdbot/skills
+git clone git@github.com:Stanley-1013/autoJira-skill.git autojira-skill
+```
+
+(Optional) If your environment uses `~/.moltbot/skills/` directly:
+```bash
+mkdir -p ~/.moltbot/skills
+cd ~/.moltbot/skills
 git clone git@github.com:Stanley-1013/autoJira-skill.git autojira-skill
 ```
 
