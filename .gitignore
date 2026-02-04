@@ -2,3 +2,6 @@
 .tmp_worklog_entry.txt
 .tmp_*.txt
 *.tmp
+
+# Local work logs (do not publish)
+WORKLOG.md
