@@ -1,0 +1,4 @@
+# Lab-local scratch files
+.tmp_worklog_entry.txt
+.tmp_*.txt
+*.tmp
